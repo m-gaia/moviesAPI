@@ -1,0 +1,12 @@
+//consumir json y va a mapear para cards
+import "./PeliculasCard.css" 
+export const PeliculasCard = ({pelicula})=> {
+
+    const imgURL = `https://image.tmdb.org/t/p/w300${pelicula.poster_path}`
+    return (
+        <li className="moviesCard">
+            <img className="moviesImg" src={imgURL} alt={pelicula.title} />
+            <div>{pelicula.title}</div>
+        </li>
+    );
+}

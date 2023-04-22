@@ -1,4 +1,4 @@
-import {PeliculasGrid} from "./PeliculasGrid";
+import {PeliculasGrid} from "./components/PeliculasGrid";
 import './App.css';
 
 function App() {

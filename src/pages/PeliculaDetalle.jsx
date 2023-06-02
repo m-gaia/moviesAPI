@@ -1,18 +1,27 @@
 import { get } from "../utils/httpCliente.js";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Spinner } from "../components/Spinner.jsx";
 import "./PeliculaDetalle.css";
 
 export const PeliculaDetalle = () => {
     const { peliculaId } = useParams();
+
+    const [cargando,setCargando]= useState(true);
     const [pelicula, setPelicula] = useState(null);
   
     useEffect(() => {
       //llamado a la api
+      setCargando(true)
       get(`/movie/${peliculaId}`).then((data) => {
         setPelicula(data);
+      setCargando(false)
       });
     }, [peliculaId]);
+
+    if(cargando){
+      return <Spinner/>
+    }
   
     if (!pelicula) {
       return null;

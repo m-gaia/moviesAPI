@@ -5,7 +5,10 @@ import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"; // 11 importamos useLocation
 import {PeliculasCard} from "./PeliculasCard"
 import { Spinner } from "../components/Spinner.jsx";
+import ReactPaginate from 'react-paginate';
 import "./PeliculasGrid.css" 
+import "./Paginacion.css" 
+//import { Paginacion } from "../components/Paginacion.jsx";
 
 export const PeliculasGrid=()=> {
 
@@ -24,8 +27,17 @@ const search = query.get("search") //traer lo que esta despues de search
 /*     const location = useLocation() */
    /*  console.log(location);  */// vemos en el navegador
  /*   console.log(location.search) como se ejecuta search*/
+// const [posts, setPosts] = useState([]);
+
+
  const [cargando,setCargando]= useState(true);
  const [peliculas,setPeliculas] = useState([])
+
+  //  estado para contener la página actual 
+ const [currentPage, setCurrentPage] = useState(1);
+ //cantidad de peliculas que muestra en una página
+ const [postsPerPage] = useState(8);
+
 
  useEffect(()=>{
     //15 realizamos un ternario , si hay busqueda, hace un llamado al endpoint de busqueda, sino al de peliculas
@@ -44,11 +56,46 @@ if(cargando){
     return <Spinner/>
   }
 
+ //variables para almacenar el índice de la primera y última publicación de una página
+ const indexOfLastPost = currentPage * postsPerPage;
+ const indexOfFirstPost = indexOfLastPost - postsPerPage;
+ //uso de splice() método para ayudarnos a obtener el contenido que queremos mostrar en cada página
+ const currentPosts = peliculas.slice(indexOfFirstPost, indexOfLastPost);
+ 
+ //establecer el currentPage número recibido
+ const paginate = ({ selected }) => {
+      setCurrentPage(selected + 1);
+   };
+
 return(
-    <ul className="moviesGrid">
-        {peliculas.map((pelicula)=>(
-        <PeliculasCard key={pelicula.id} pelicula={pelicula}/>
-        ))}
-    </ul>
+    <div>
+      <ul className="moviesGrid">
+          {currentPosts.map((pelicula)=>(
+          <PeliculasCard key={pelicula.id} pelicula={pelicula}/>
+          ))}
+      </ul>
+      {/* <Paginacion
+                  postsPerPage={postsPerPage}
+                  totalPosts={peliculas.length}
+                  paginate={paginate}
+      /> */}
+          <div className="pagination-container">
+            <ul className="pagination">
+              <li className="page-number">
+                <ReactPaginate
+                  onPageChange={paginate}
+                  pageCount={Math.ceil(peliculas.length / postsPerPage)}
+                  previousLabel={'Prev'}
+                  nextLabel={'Next'}
+                  containerClassName={'pagination'}
+                  pageLinkClassName={'page-number'}
+                  previousLinkClassName={'page-number'}
+                  nextLinkClassName={'page-number'}
+                  activeLinkClassName={'active'}
+               />
+               </li>
+            </ul>
+          </div>
+    </div>
 )
 }

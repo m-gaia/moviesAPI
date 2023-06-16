@@ -4,33 +4,51 @@ import { useState, useEffect } from "react";
 import { Spinner } from "../components/Spinner.jsx";
 //import "./PeliculaDetalle.css";
 
-export const PeliculaDetalle = () => {
-    const { peliculaId } = useParams();
+export const TVShowDetalle = () => {
+    const { tvShowId } = useParams();
 
     const [cargando,setCargando]= useState(true);
-    const [pelicula, setPelicula] = useState(null);
+    const [tvshow, setTVShows] = useState(null);
   
     useEffect(() => {
       //llamado a la api
       setCargando(true)
-      get(`/movie/${peliculaId}`).then((data) => {
-        setPelicula(data);
+      get(`/tv/${tvShowId}`).then((data) => {
+        setTVShows(data);
       setCargando(false)
       });
-    }, [peliculaId]);
+    }, [tvShowId]);
 
     if(cargando){
       return <Spinner/>
     }
   
-    if (!pelicula) {
+    if (!tvshow) {
       return null;
     }
-    const imgURL = `https://image.tmdb.org/t/p/w300${pelicula.poster_path}`;
+    const imgURL = `https://image.tmdb.org/t/p/w300${tvshow.poster_path}`;
     return (
+      // <div className="contenedorDetalle">
+      //   <img className="col" src={imgURL} alt={tvshow.name} />
+      //   <div className="tvShowDetalle">
+      //     <p className="item">
+      //       <strong>Titulo: </strong>
+      //       {tvshow.name}
+      //     </p>
+      //     <p>
+      //       <strong>Description: </strong>
+      //       {tvshow.overview}
+      //     </p>
+  
+      //     <p>
+      //       <strong>Generos: </strong>
+      //       {tvshow.genres.map((genre) => genre.name).join(", ")}
+      //     </p>
+      //   </div>
+      // </div>
       <section
       className={`max_width px-4 grid md:grid-cols-2 lg:grid-cols-3 h-screen place-items-center pt-10 gap-4 ${
-        pelicula? "overflow-hidden" : ""
+        tvshow? "overflow-hidden" : ""
       }`}
     >
       {/* seccion imagen  */}
@@ -41,7 +59,7 @@ export const PeliculaDetalle = () => {
               ? imgURL
               : "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
           }
-          alt={pelicula.title}
+          alt={tvshow.name}
           className="rounded-xl"
         />
       </div>
@@ -52,12 +70,12 @@ export const PeliculaDetalle = () => {
           to="/"
           className="text-para_text transition duration-200 ease-in hover:text-white hover:tracking-wider"
         >
-          Home / {pelicula.id}
+          Home / {tvshow.id}
         </Link>
-        <h1 className="text-6xl font-bold text-center py-2">{pelicula.title}</h1>
+        <h1 className="text-6xl font-bold text-center py-2">{tvshow.name}</h1>
         <div className="flex justify-between items-center gap-4">
           <div>
-            {pelicula.genres.map((genre) => (
+            {tvshow.genres.map((genre) => (
               <span
                 key={genre}
                 className="border border-white/50 rounded-lg px-3 py-1 mr-3"
@@ -69,7 +87,7 @@ export const PeliculaDetalle = () => {
 
           <button
             className="bg-blue px-4 py-1 text-xl font-semibold rounded-2xl hover:bg-blue/80 active:scale-90"
-            onClick={() => setPelicula(true)}
+            onClick={() => setTVShows(true)}
           >
             Trailer
           </button>
@@ -77,15 +95,14 @@ export const PeliculaDetalle = () => {
         <div className="px-2">
           <h1 className="font-bold text-xl mb-1">RESUMEN:</h1>
           <p className="text-para_text">
-            {pelicula.overview.replace(/(<([^>]+)>)/gi, "")}
+            {tvshow.overview.replace(/(<([^>]+)>)/gi, "")}
           </p>
         </div>
         <div className="text-para_text px-2 pb-10">
           <h1 className="text-white font-bold text-xl mb-1">DETALLES:</h1>
-          <p>Estreno: {pelicula.release_date || "Desconocido"}</p>
-          <p>Idioma: {pelicula.original_language}</p>
-          <p>Puntuación: {pelicula.vote_average} Votos: {pelicula.vote_count}</p>
-		      <p>{pelicula.adult === true || "Apto para todo público"} </p>
+          <p>Estreno: {tvshow.release_date || "Desconocido"}</p>
+          <p>Idioma: {tvshow.original_language}</p>
+          <p>Puntuación: {tvshow.vote_average} Votos: {tvshow.vote_count}</p>
         </div>
       </div>
 

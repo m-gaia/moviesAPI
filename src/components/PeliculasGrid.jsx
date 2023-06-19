@@ -76,15 +76,15 @@ return(
           <div className="pagination-container">
             <ul className="pagination">
               <li className="page-number">
-                <ReactPaginate
+                <ReactPaginate 
                   onPageChange={paginate}
                   pageCount={Math.ceil(peliculas.length / postsPerPage)}
                   previousLabel={'Prev'}
                   nextLabel={'Next'}
                   containerClassName={'pagination'}
                   pageLinkClassName={'page-number'}
-                  previousLinkClassName={'page-number'}
-                  nextLinkClassName={'page-number'}
+                  previousLinkClassName={'page-number hover:bg-blue'}
+                  nextLinkClassName={'page-number hover:bg-blue'}
                   activeLinkClassName={'active'}
                />
                </li>

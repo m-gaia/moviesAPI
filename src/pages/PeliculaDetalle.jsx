@@ -29,7 +29,8 @@ export const PeliculaDetalle = () => {
     const imgURL = `https://image.tmdb.org/t/p/w300${pelicula.poster_path}`;
     return (
       <section
-      className={`max_width px-4 grid md:grid-cols-2 lg:grid-cols-3 h-screen place-items-center pt-10 gap-4 ${
+      className={`max_width px-4 grid md:grid-cols-2 lg:grid-cols-3 place-items-center pt-10 sm:pt-20 gap-4 
+      ${
         pelicula? "overflow-hidden" : ""
       }`}
     >
@@ -49,18 +50,19 @@ export const PeliculaDetalle = () => {
       {/* seccion resumen  */}
       <div className="lg:col-span-2 space-y-5 max-w-[50rem]">
         <Link
-          to="/pelicula"
-          className="text-para_text transition duration-200 ease-in hover:text-white hover:tracking-wider"
+          to="/"
+          className="no-underline text-para_text transition duration-200 ease-in hover:text-blue hover:tracking-wider"
         >
-          Volver / {pelicula.id}
-        </Link>
-        <h1 className="text-6xl font-bold text-center py-2">{pelicula.title}</h1>
+          Inicio </Link> / <Link
+          to="/pelicula" className="no-underline text-para_text transition duration-200 ease-in hover:text-blue hover:tracking-wider">
+        Peliculas</Link>
+        <h1 className="text-6xl md:text-3xl font-bold text-center py-2">{pelicula.title}</h1>
         <div className="flex justify-between items-center gap-4">
           <div>
             {pelicula.genres.map((genre) => (
               <span
                 key={genre}
-                className="border border-white/50 rounded-lg px-3 py-1 mr-3"
+                className="border border-blue rounded-lg px-3 py-1 mr-3"
               >
                 {genre.name}
               </span>
@@ -68,7 +70,7 @@ export const PeliculaDetalle = () => {
           </div>
 
           <button
-            className="bg-blue px-4 py-1 text-xl font-semibold rounded-2xl hover:bg-blue/80 active:scale-90"
+            className="bg-blue px-4 py-1 text-white text-xl font-semibold rounded-2xl hover:bg-blue/80 active:scale-90"
             onClick={() => setPelicula(true)}
           >
             Trailer
@@ -82,10 +84,10 @@ export const PeliculaDetalle = () => {
         </div>
         <div className="text-para_text px-2 pb-10">
           <h1 className="text-white font-bold text-xl mb-1">DETALLES:</h1>
-          <p>Estreno: {pelicula.release_date || "Desconocido"}</p>
-          <p>Idioma: {pelicula.original_language}</p>
-          <p>Puntuación: {pelicula.vote_average} Votos: {pelicula.vote_count}</p>
-		      <p>{pelicula.adult === true || "Apto para todo público"} </p>
+          <p><strong>Estreno:</strong> {pelicula.release_date || "Desconocido"}</p>
+          <p><strong>Idioma:</strong> {pelicula.original_language}</p>
+          <p><strong>Puntuación:</strong> {pelicula.vote_average} <strong>Votos:</strong> {pelicula.vote_count}</p>
+		      <p className="font-bold">{pelicula.adult === true || "Apto para todo público"} </p>
         </div>
       </div>
 

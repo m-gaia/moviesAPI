@@ -68,8 +68,7 @@ if(cargando){
 
 return(
     <div>
-      
-      <ul className="moviesGrid">
+      <ul className="moviesGrid z-50">
           {currentPosts.map((pelicula)=>(
           <PeliculasCard key={pelicula.id} pelicula={pelicula}/>
           ))}

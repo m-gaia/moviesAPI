@@ -54,7 +54,7 @@ if(cargando){
 
 return(
     <div>
-    <ul className="tvShowsGrid">
+    <ul className="tvShowsGrid z-50">
         {currentPosts.map((tvshow)=>(
         <TVShowsCard key={tvshow.id} tvshow={tvshow}/>
         ))}

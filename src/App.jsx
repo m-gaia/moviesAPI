@@ -11,13 +11,6 @@ import {LandingPage} from "./pages/LandingPage";
 function App() {
   return (
    <BrowserRouter>
-      <div className=" w-full h-screen">
-          {/* <h1 className="text-1xl font-bold text-center "><LandingPage/></h1>
-          {/* <Link to="/">
-            <h1 className="text-1xl font-bold text-center "><LandingPage/></h1>
-          </Link>  */}
-        
-        {/* definicion de rutas a componentes */}
         <LandingPage/>
         <Routes>
           <Route path="/" element={<LandingPage/>}/>
@@ -26,7 +19,6 @@ function App() {
           <Route path="/tvshow" element={<TVShowsMain/> }/>
           <Route path="/tvshow/:tvShowId" element={<TVShowDetalle/>}/>
         </Routes>
-      </div>
     </BrowserRouter>
   );
 }

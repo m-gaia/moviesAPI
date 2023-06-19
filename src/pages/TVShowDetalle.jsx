@@ -47,7 +47,8 @@ export const TVShowDetalle = () => {
       //   </div>
       // </div>
       <section
-      className={`max_width px-4 grid md:grid-cols-2 lg:grid-cols-3 h-screen place-items-center pt-10 gap-4 ${
+      className={`max_width px-4 grid md:grid-cols-2 lg:grid-cols-3 place-items-center pt-10 sm:pt-20 gap-4 
+      ${
         tvshow? "overflow-hidden" : ""
       }`}
     >
@@ -66,19 +67,20 @@ export const TVShowDetalle = () => {
 
       {/* seccion resumen  */}
       <div className="lg:col-span-2 space-y-5 max-w-[50rem]">
-        <Link
+      <Link
           to="/"
-          className="text-para_text transition duration-200 ease-in hover:text-white hover:tracking-wider"
+          className="no-underline text-para_text transition duration-200 ease-in hover:text-blue hover:tracking-wider"
         >
-          Home / {tvshow.id}
-        </Link>
+          Inicio </Link> / <Link
+          to="/tvshow" className="no-underline text-para_text transition duration-200 ease-in hover:text-blue hover:tracking-wider">
+        Tv Shows</Link>
         <h1 className="text-6xl font-bold text-center py-2">{tvshow.name}</h1>
         <div className="flex justify-between items-center gap-4">
           <div>
             {tvshow.genres.map((genre) => (
               <span
                 key={genre}
-                className="border border-white/50 rounded-lg px-3 py-1 mr-3"
+                className="border border-blue rounded-lg px-3 py-1 mr-3"
               >
                 {genre.name}
               </span>
@@ -86,7 +88,7 @@ export const TVShowDetalle = () => {
           </div>
 
           <button
-            className="bg-blue px-4 py-1 text-xl font-semibold rounded-2xl hover:bg-blue/80 active:scale-90"
+            className="bg-blue text-white px-4 py-1 text-xl font-semibold rounded-2xl hover:bg-blue/80 active:scale-90"
             onClick={() => setTVShows(true)}
           >
             Trailer
@@ -100,9 +102,9 @@ export const TVShowDetalle = () => {
         </div>
         <div className="text-para_text px-2 pb-10">
           <h1 className="text-white font-bold text-xl mb-1">DETALLES:</h1>
-          <p>Estreno: {tvshow.release_date || "Desconocido"}</p>
-          <p>Idioma: {tvshow.original_language}</p>
-          <p>Puntuación: {tvshow.vote_average} Votos: {tvshow.vote_count}</p>
+          <p><strong>Estreno:</strong> {tvshow.release_date || "Desconocido"}</p>
+          <p><strong>Idioma:</strong>  {tvshow.original_language}</p>
+          <p><strong>Puntuación:</strong> {tvshow.vote_average} <strong>Votos:</strong> {tvshow.vote_count}</p>
         </div>
       </div>
 

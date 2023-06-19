@@ -10,7 +10,7 @@ export const Header = () => {
     ]
     let [open, setOpen] = useState (false);
     return (
-        <div className='shadow-md w-full fixed top-0 left-0'>
+        <div className='shadow-md w-full top-0 left-0 fixed z-[100]'>
             <div className='md:px-10 py-3 px-7 md:flex justify-between items-center bg-white'>
                 <Link to="/" className='no-underline'>
                     <div className='flex text-2xl cursor-pointer items-center gap-2'>

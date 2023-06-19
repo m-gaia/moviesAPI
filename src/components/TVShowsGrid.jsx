@@ -14,7 +14,7 @@ const useQuery = ()=>{
   }
 
 const query = useQuery() 
-const search = query.get("search") 
+const search = query.get("search/tv") 
 
  const [cargando,setCargando]= useState(true);
  const [tvshows,setTVShows] = useState([])

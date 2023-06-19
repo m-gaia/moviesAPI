@@ -49,10 +49,10 @@ export const PeliculaDetalle = () => {
       {/* seccion resumen  */}
       <div className="lg:col-span-2 space-y-5 max-w-[50rem]">
         <Link
-          to="/"
+          to="/pelicula"
           className="text-para_text transition duration-200 ease-in hover:text-white hover:tracking-wider"
         >
-          Home / {pelicula.id}
+          Volver / {pelicula.id}
         </Link>
         <h1 className="text-6xl font-bold text-center py-2">{pelicula.title}</h1>
         <div className="flex justify-between items-center gap-4">

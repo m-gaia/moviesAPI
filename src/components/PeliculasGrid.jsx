@@ -8,7 +8,7 @@ import { Spinner } from "../components/Spinner.jsx";
 import ReactPaginate from 'react-paginate';
 import "./PeliculasGrid.css" 
 import "./Paginacion.css" 
-//import { Paginacion } from "../components/Paginacion.jsx";
+
 
 export const PeliculasGrid=()=> {
 
@@ -27,7 +27,6 @@ const search = query.get("search") //traer lo que esta despues de search
 /*     const location = useLocation() */
    /*  console.log(location);  */// vemos en el navegador
  /*   console.log(location.search) como se ejecuta search*/
-// const [posts, setPosts] = useState([]);
 
 
  const [cargando,setCargando]= useState(true);
@@ -42,7 +41,7 @@ const search = query.get("search") //traer lo que esta despues de search
  useEffect(()=>{
     //15 realizamos un ternario , si hay busqueda, hace un llamado al endpoint de busqueda, sino al de peliculas
     const searchUrl = search 
-    ? "/search/movie?query="+search 
+    ? "/search?query="+search 
     :"/discover/movie"
 
     setCargando(true)
@@ -69,16 +68,12 @@ if(cargando){
 
 return(
     <div>
+      
       <ul className="moviesGrid">
           {currentPosts.map((pelicula)=>(
           <PeliculasCard key={pelicula.id} pelicula={pelicula}/>
           ))}
       </ul>
-      {/* <Paginacion
-                  postsPerPage={postsPerPage}
-                  totalPosts={peliculas.length}
-                  paginate={paginate}
-      /> */}
           <div className="pagination-container">
             <ul className="pagination">
               <li className="page-number">

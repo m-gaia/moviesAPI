@@ -13,7 +13,8 @@ const [searchText, setSearchText] = useState(""); //7
 
 const handleSubmit = (e) => {
     e.preventDefault(); //3 mostrar que no se realiza el submit
-    navigate(`/?search=${searchText}`); //6 las preparo el useNavigate para enviar lo buscado a la url
+    navigate(`
+    pelicula/?search/=${searchText}`); //6 las preparo el useNavigate para enviar lo buscado a la url
 };
 
 return (

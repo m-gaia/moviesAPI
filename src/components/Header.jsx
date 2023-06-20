@@ -4,9 +4,9 @@ import { HiFilm, HiMenuAlt2, HiOutlineX } from "react-icons/hi";
 
 export const Header = () => {
     let Links = [
-       {name: 'Inicio', link:"/"},
-       {name: 'Peliculas', link:"/pelicula"}, 
-       {name: 'TvShows', link:"/tvshow"},
+       {name: 'Inicio', link:"/", key: 'inicio'},
+       {name: 'Peliculas', link:"/pelicula", key: 'peliculas'}, 
+       {name: 'TvShows', link:"/tvshow", key: 'tvshows'},
     ]
     let [open, setOpen] = useState (false);
     return (
@@ -21,7 +21,7 @@ export const Header = () => {
                 <ul className={`md:flex md:items-center md:pb-0 pb-12 mb-0 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-12' : 'top-[-490px]'}`}>
                     {
                     Links.map((link) => (
-                    <li className='md:ml-8 md:my-0 my-7 font-semibold'>
+                    <li className='md:ml-8 md:my-0 my-7 font-semibold' key={link.key}>
                         <Link to={link.link} className='text-black hover:text-blue duration-500 no-underline'>{link.name}</Link>
                     </li>))
                     }

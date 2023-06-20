@@ -4,7 +4,7 @@ import {get} from "../utils/httpCliente.js"
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"; // 11 importamos useLocation
 import {PeliculasCard} from "./PeliculasCard"
-import { Spinner } from "../components/Spinner.jsx";
+//import { Spinner } from "../components/Spinner.jsx";
 import ReactPaginate from 'react-paginate';
 import "./PeliculasGrid.css" 
 import "./Paginacion.css" 
@@ -29,7 +29,7 @@ const search = query.get("search") //traer lo que esta despues de search
  /*   console.log(location.search) como se ejecuta search*/
 
 
- const [cargando,setCargando]= useState(true);
+// const [cargando,setCargando]= useState(true);
  const [peliculas,setPeliculas] = useState([])
 
   //  estado para contener la página actual 
@@ -44,16 +44,16 @@ const search = query.get("search") //traer lo que esta despues de search
     ? "/search?query="+search 
     :"/discover/movie"
 
-    setCargando(true)
+    //setCargando(true)
 get(searchUrl).then((data)=>{  // 16 agrego searchUrl
     setPeliculas(data.results);
-    setCargando(false)
+    //setCargando(false)
 })
 },[search]) // 17 agrego search
 
-if(cargando){
-    return <Spinner/>
-  }
+// if(cargando){
+//     return <Spinner/>
+//   }
 
  //variables para almacenar el índice de la primera y última publicación de una página
  const indexOfLastPost = currentPage * postsPerPage;
@@ -83,8 +83,8 @@ return(
                   nextLabel={'Next'}
                   containerClassName={'pagination'}
                   pageLinkClassName={'page-number'}
-                  previousLinkClassName={'page-number hover:bg-blue'}
-                  nextLinkClassName={'page-number hover:bg-blue'}
+                  previousLinkClassName={'page-number'}
+                  nextLinkClassName={'page-number'}
                   activeLinkClassName={'active'}
                />
                </li>

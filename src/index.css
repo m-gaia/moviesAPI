@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-    body {
+    /* body {
         @apply bg-light_black text-white;
-    }
+    } */
 
     img {
         @apply object-cover w-full h-full select-none;

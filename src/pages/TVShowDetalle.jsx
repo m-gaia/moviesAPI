@@ -1,27 +1,27 @@
 import { get } from "../utils/httpCliente.js";
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Spinner } from "../components/Spinner.jsx";
+//import { Spinner } from "../components/Spinner.jsx";
 //import "./PeliculaDetalle.css";
 
 export const TVShowDetalle = () => {
     const { tvShowId } = useParams();
 
-    const [cargando,setCargando]= useState(true);
+  //  const [cargando,setCargando]= useState(true);
     const [tvshow, setTVShows] = useState(null);
   
     useEffect(() => {
       //llamado a la api
-      setCargando(true)
+      //setCargando(true)
       get(`/tv/${tvShowId}`).then((data) => {
         setTVShows(data);
-      setCargando(false)
+     // setCargando(false)
       });
     }, [tvShowId]);
 
-    if(cargando){
-      return <Spinner/>
-    }
+    // if(cargando){
+    //   return <Spinner/>
+    // }
   
     if (!tvshow) {
       return null;

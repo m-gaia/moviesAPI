@@ -1,27 +1,28 @@
 import { get } from "../utils/httpCliente.js";
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Spinner } from "../components/Spinner.jsx";
+//import { Spinner } from "../components/Spinner.jsx";
 //import "./PeliculaDetalle.css";
 
 export const PeliculaDetalle = () => {
     const { peliculaId } = useParams();
 
-    const [cargando,setCargando]= useState(true);
+   // const [cargando,setCargando]= useState(true);
     const [pelicula, setPelicula] = useState(null);
   
     useEffect(() => {
       //llamado a la api
-      setCargando(true)
+      //setCargando(true)
       get(`/movie/${peliculaId}`).then((data) => {
         setPelicula(data);
-      setCargando(false)
+        //console.log(data)
+      //setCargando(false)
       });
     }, [peliculaId]);
-
-    if(cargando){
-      return <Spinner/>
-    }
+    
+    // if(cargando){
+    //   return <Spinner/>
+    // }
   
     if (!pelicula) {
       return null;
@@ -59,9 +60,9 @@ export const PeliculaDetalle = () => {
         <h1 className="text-6xl md:text-3xl font-bold text-center py-2">{pelicula.title}</h1>
         <div className="flex justify-between items-center gap-4">
           <div>
-            {pelicula.genres.map((genre) => (
+            {pelicula.genres.map((genre, index) => (
               <span
-                key={genre}
+                key={index}
                 className="border border-blue rounded-lg px-3 py-1 mr-3"
               >
                 {genre.name}

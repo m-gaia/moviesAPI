@@ -2,7 +2,7 @@ import {get} from "../utils/httpCliente.js"
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"; 
 import {TVShowsCard} from "./TVShowsCard"
-import { Spinner } from "../components/Spinner.jsx";
+//import { Spinner } from "../components/Spinner.jsx";
 import ReactPaginate from 'react-paginate';
 import "./TVShowsGrid.css" 
 import "./Paginacion.css"
@@ -16,7 +16,7 @@ const useQuery = ()=>{
 const query = useQuery() 
 const search = query.get("search/tv") 
 
- const [cargando,setCargando]= useState(true);
+ //const [cargando,setCargando]= useState(true);
  const [tvshows,setTVShows] = useState([])
 
    //  estado para contener la página actual 
@@ -30,16 +30,16 @@ const search = query.get("search/tv")
     ? "/search/tv?query="+search 
     :"/discover/tv"
 
-    setCargando(true)
+   // setCargando(true)
 get(searchUrl).then((data)=>{  
     setTVShows(data.results);
-    setCargando(false)
+   // setCargando(false)
 })
 },[search]) 
 
-if(cargando){
-    return <Spinner/>
-  }
+// if(cargando){
+//     return <Spinner/>
+//   }
 
  //variables para almacenar el índice de la primera y última publicación de una página
  const indexOfLastPost = currentPage * postsPerPage;

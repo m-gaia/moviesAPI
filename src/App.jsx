@@ -6,12 +6,13 @@ import {PeliculasMain} from "./pages/PeliculasMain";
 import {TVShowDetalle} from "./pages/TVShowDetalle";
 import {TVShowsMain} from "./pages/TVShowsMain";
 import {LandingPage} from "./pages/LandingPage";
+import {Header} from './components/Header';
 
 
 function App() {
   return (
-   <BrowserRouter>
-        <LandingPage/>
+    <BrowserRouter>
+        <Header/>
         <Routes>
           <Route path="/" element={<LandingPage/>}/>
           <Route path="/pelicula" element={<PeliculasMain/> }/>

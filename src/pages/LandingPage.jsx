@@ -1,10 +1,13 @@
 import React from 'react';
-import {Header} from '../components/Header';
+import {InicioSlider} from '../components/InicioSlider';
+
 
 export const LandingPage = () => {
     return (
         <div>
-            <Header/>
+            
+            <InicioSlider/>
+
         </div>
     );
 };

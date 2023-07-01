@@ -11,18 +11,18 @@ export const Header = () => {
     let [open, setOpen] = useState (false);
     return (
         <div className='shadow-md w-full top-0 left-0 fixed z-[100]'>
-            <div className='md:px-10 py-3 px-7 md:flex justify-between items-center bg-white'>
+            <div className='md:px-10 py-3 px-7 md:flex justify-between items-center bg-black bg-opacity-50 text-white' style={{ fontFamily: 'Raleway' }}>
                 <Link to="/" className='no-underline'>
                     <div className='flex text-2xl cursor-pointer items-center gap-2'>
                         <HiFilm className='h-7 w-7 text-blue'/>
-                        <span className='font-bold text-black'> |FullMovies</span>
+                        <span className='font-bold text-white'> |FullMovies</span>
                     </div>
                 </Link>
-                <ul className={`md:flex md:items-center md:pb-0 pb-12 mb-0 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-12' : 'top-[-490px]'}`}>
+                <ul className={`md:flex md:items-center md:pb-0 pb-12 mb-0 absolute md:static md:z-auto z-[-1] left-0 w-full bg-black md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-12' : 'top-[-490px]'}`}>
                     {
                     Links.map((link) => (
                     <li className='md:ml-8 md:my-0 my-7 font-semibold' key={link.key}>
-                        <Link to={link.link} className='text-black hover:text-blue duration-500 no-underline'>{link.name}</Link>
+                        <Link to={link.link} className='text-white hover:underline hover:underline-offset-8 duration-500 no-underline'>{link.name}</Link>
                     </li>))
                     }
                 </ul>

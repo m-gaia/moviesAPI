@@ -1,5 +1,3 @@
-//import React, { useRef, useState } from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -47,25 +45,20 @@ export const  InicioSlider = () => {
           modules={[Autoplay, Parallax, Pagination, Navigation]}
           className="mySwiper"
         >
-          {/* <div
-            slot="container-start"
-            className="parallax-bg"
-            style={{
-              "background-image":
-                "url(https://swiperjs.com/demos/images/nature-1.jpg)",
-            }}
-            data-swiper-parallax="-23%"
-          ></div> */}
             {peliculasAct.map(peliculaAct => (
               <SwiperSlide key={peliculaAct.id} className="container-swiper swiper-slide2" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${peliculaAct.backdrop_path})` }}>
-                <div className="title" data-swiper-parallax="-300">
-                  {peliculaAct.title}
-                </div>
-                <div className="subtitle" data-swiper-parallax="-200">
-                  {peliculaAct.subtitle}
-                </div>
-                <div className="text" data-swiper-parallax="-100">
-                  <p>{peliculaAct.overview.substring(0, 200)}...</p>
+                <div className="content grid md:grid-cols-2 lg:grid-cols-3 place-items-center">
+                  {/* <div className="image">
+                    <img src={`https://image.tmdb.org/t/p/w1280/${peliculaAct.poster_path}`} alt={peliculaAct.title} className="poster-image"/>
+                  </div> */}
+                  <div className="title-text-container">
+                    <div className="title" data-swiper-parallax="-300">
+                      {peliculaAct.title}
+                    </div>
+                    <div className="text" data-swiper-parallax="-100">
+                      <p>{peliculaAct.overview.substring(0, 100)}...</p>
+                    </div>
+                  </div>
                 </div>
               </SwiperSlide>
             ))}

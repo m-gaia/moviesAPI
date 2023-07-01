@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 //import { Spinner } from "../components/Spinner.jsx";
 //import "./PeliculaDetalle.css";
+import { HiArrowCircleLeft } from "react-icons/hi";
 
 export const PeliculaDetalle = () => {
     const { peliculaId } = useParams();
@@ -51,19 +52,15 @@ export const PeliculaDetalle = () => {
       {/* seccion resumen  */}
       <div className="lg:col-span-2 space-y-5 max-w-[50rem]">
         <Link
-          to="/"
-          className="no-underline text-para_text transition duration-200 ease-in hover:text-blue hover:tracking-wider"
-        >
-          Inicio </Link> / <Link
           to="/pelicula" className="no-underline text-para_text transition duration-200 ease-in hover:text-blue hover:tracking-wider">
-        Peliculas</Link>
+        <HiArrowCircleLeft className="text-3xl"></HiArrowCircleLeft></Link>
         <h1 className="text-6xl md:text-3xl font-bold text-center py-2">{pelicula.title}</h1>
         <div className="flex justify-between items-center gap-4">
           <div>
             {pelicula.genres.map((genre, index) => (
               <span
                 key={index}
-                className="border border-blue rounded-lg px-3 py-1 mr-3"
+                className="border border-black rounded-lg px-3 py-1 mr-3"
               >
                 {genre.name}
               </span>
@@ -74,7 +71,7 @@ export const PeliculaDetalle = () => {
             className="bg-blue px-4 py-1 text-white text-xl font-semibold rounded-2xl hover:bg-blue/80 active:scale-90"
             onClick={() => setPelicula(true)}
           >
-            Trailer
+            Ver Trailer
           </button>
         </div>
         <div className="px-2">

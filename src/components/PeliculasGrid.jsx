@@ -8,6 +8,7 @@ import {PeliculasCard} from "./PeliculasCard"
 import ReactPaginate from 'react-paginate';
 import "./PeliculasGrid.css" 
 import "./Paginacion.css" 
+import { PeliculasFiltro } from './PeliculasFiltro';
 
 
 export const PeliculasGrid=()=> {
@@ -31,7 +32,7 @@ const search = query.get("search") //traer lo que esta despues de search
 
 // const [cargando,setCargando]= useState(true);
  const [peliculas,setPeliculas] = useState([])
-
+ const [filtroGenero, setFiltroGenero] = useState('');
   //  estado para contener la página actual 
  const [currentPage, setCurrentPage] = useState(1);
  //cantidad de peliculas que muestra en una página
@@ -55,11 +56,23 @@ get(searchUrl).then((data)=>{  // 16 agrego searchUrl
 //     return <Spinner/>
 //   }
 
+const filtrarPorGenero = (genero) => {
+  if (genero === 'todos') {
+    setFiltroGenero('');
+  } else {
+    setFiltroGenero(genero);
+  }
+};
+
+const peliculasFiltradas = filtroGenero
+  ? peliculas.filter((pelicula) => pelicula.genero === filtroGenero)
+  : peliculas;
+
  //variables para almacenar el índice de la primera y última publicación de una página
  const indexOfLastPost = currentPage * postsPerPage;
  const indexOfFirstPost = indexOfLastPost - postsPerPage;
  //uso de splice() método para ayudarnos a obtener el contenido que queremos mostrar en cada página
- const currentPosts = peliculas.slice(indexOfFirstPost, indexOfLastPost);
+ const currentPosts = peliculasFiltradas.slice(indexOfFirstPost, indexOfLastPost);
  
  //establecer el currentPage número recibido
  const paginate = ({ selected }) => {
@@ -68,6 +81,9 @@ get(searchUrl).then((data)=>{  // 16 agrego searchUrl
 
 return(
     <div>
+      <div className="moviesFilterContainer">
+        <PeliculasFiltro peliculas={peliculas} setPeliculas={setPeliculas} filtrarPorGenero={filtrarPorGenero} />
+      </div>
       <ul className="moviesGrid z-50">
           {currentPosts.map((pelicula)=>(
           <PeliculasCard key={pelicula.id} pelicula={pelicula}/>

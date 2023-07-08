@@ -21,6 +21,9 @@ module.exports = {
       "para_text": "#565657"
     },
     extend: {},
+    fontFamily: {
+      sans: ['Raleway', 'sans-serif'],
+    },
   },
   plugins: [],
 }

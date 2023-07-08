@@ -4,7 +4,11 @@
     gap:40px;
     padding: 40px;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 30px;
+}
+
+.moviesFilterContainer {
+    margin-top: 30px; /* Ajusta el margen superior según tus necesidades */
 }
 
 @media (max-width:560px) {

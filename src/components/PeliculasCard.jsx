@@ -10,7 +10,7 @@ export const PeliculasCard = ({pelicula})=> {
                 <div className="h-[20rem] sm:h-[25rem] lg:h-[30rem]">
                     <img className="rounded-xl object-cover" src={imgURL} alt={pelicula.title}/>
                 </div>
-                <h1 className="text-black text-center py-2 text-xl">{pelicula.title}</h1>
+                {/* <h1 className="text-black text-center py-2 text-xl">{pelicula.title}</h1> */}
                 <div className="absolute top-2 left-2 bg-blue rounded-full px-2 py-1 text-sm text-white flex items-center gap-1">
                     <span>{Number(pelicula.vote_average || "6.5").toFixed(1)}</span>
                     <AiFillStar className="text-lg" />

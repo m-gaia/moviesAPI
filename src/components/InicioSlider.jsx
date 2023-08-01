@@ -22,12 +22,17 @@ import { useState, useEffect } from "react"
 export const  InicioSlider = () => {
 
   const [peliculasAct,setPeliculasAct] = useState([])
+  const [generos, setGeneros] = useState([]);
 
   useEffect(()=>{
+
     get("/movie/now_playing").then((data)=>{
         setPeliculasAct(data.results);
     })
-    },[])
+    get("/genre/movie/list").then((data) => {
+      setGeneros(data.genres);
+    });
+    },[]);
 
     return (
       <>
@@ -60,9 +65,18 @@ export const  InicioSlider = () => {
                     <span>Rating {Number(peliculaAct.vote_average || "6.5").toFixed(1)}</span>
                   </div>
                   <div className="title" data-swiper-parallax="-300">
-                    {peliculaAct.title}
+                    {peliculaAct.title.substring(0, 20)}
                   </div>
-                  <div className="text" data-swiper-parallax="-100">
+                  <div>
+                    {peliculaAct.genre_ids.map((genreId) => {
+                      const genre = generos.find((genre) => genre.id === genreId);
+                      return genre && 
+                      <span key={genre.id} className="genre mr-3 text-white hover:underline hover:underline-offset-8">
+                        {genre.name}
+                      </span>;
+                    })}
+                  </div>
+                  <div className="text mt-3" data-swiper-parallax="-100">
                     <p>{peliculaAct.overview.substring(0, 100)}...</p>
                   </div>
                   <button className="bg-white hover:bg-yellow text-black py-1 px-8 mt-8 rounded-lg btn-slider">Ver Más &gt;</button>

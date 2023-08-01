@@ -103,5 +103,13 @@
   opacity:0.9;
 }
 
+.genre {
+  opacity: 0.9;
+  transition: text-decoration-color 0.2s; 
+}
+
+.genre:hover {
+  text-decoration-color: #f7ff00; 
+}
 
 

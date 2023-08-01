@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-    /* body {
-        @apply bg-light_black text-white;
-    } */
+    body {
+        @apply bg-black_background;
+    }
 
     img {
         @apply object-cover w-full h-full select-none;
@@ -16,6 +16,7 @@
     .max_width {
         @apply max-w-[1300px] mx-auto;
     }
+
 }
 
 

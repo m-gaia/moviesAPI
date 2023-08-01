@@ -11,6 +11,7 @@
     position: absolute;
     right: 0;
     top:0;
+    padding-right: 0.6rem;
     cursor: pointer;
     height: 100%;
     border: none;
@@ -18,7 +19,14 @@
 }
 
 .buscadorInput{
-height: 35px;
-border-radius: 10px;
-padding: 5px 30px 5px 10px ;
+    height: 30px;
+    border-radius: 11px;
+    border: 1px solid #EEEEEE;
+    padding: 5px 30px 5px 10px;
+    background-color: #EEEEEE80;
+}
+
+.buscadorInput:focus {
+    outline: none; 
+    border-color: #EEEEEE; 
 }

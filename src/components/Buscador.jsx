@@ -1,6 +1,6 @@
-import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom"; // 4 importo useNavigate
 import { useState } from "react"; //7 importamos useState
+import { HiSearch } from "react-icons/hi";
 import "./Buscador.css"
 
 export const Buscador = () => {
@@ -31,7 +31,7 @@ return (
           type="text"
         />
         <button type="submit" className="buscadorButton">
-          <FaSearch />
+          <HiSearch className="text-yellow w-5 h-5"/>
         </button>
       </div>
     </form>
